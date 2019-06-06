@@ -6,11 +6,13 @@ const initialState = {count: 0}
 function rootReducer(state = initialState, action) {
   switch(action.type) {
     case "INCREMENT":
-      state.count++;
-      return state;
+      var newState = {...state}; // cannot use 'let' more than once inside of a switch statement
+      newState.count++;
+      return newState;
     case "DECREMENT":
-      state.count--;
-      return state;
+      var newState = Object.assign({}, state);
+      newState.count--;
+      return newState;
     default: 
       return state;
   }  
